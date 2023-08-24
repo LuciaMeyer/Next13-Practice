@@ -105,13 +105,36 @@ ________________________________________________________________________________
 
 _________________________________________________________________________________________________
 
-> Desplegar la aplicación en Vercel (Creado por la misma gente de Next.js)
+> Docker - Construcción recomendada
 
-Generar una imagen de Docker
+- los pasos recomendados por el equipo de Next para construir una imagen de Docker los podemos encontrar en: https://nextjs.org/docs/pages/building-your-application/deploying#docker-image
 
-Crear la imagen de Docker siguiendo las prácticas recomendadas por Next
+- en ese repositorio podemos copiar el dockerfile, y es importante que en el archivo de configuración de next.config.js
+se agregue:
+```
+const nextConfig = {
+    output: 'standalone',
+}
+```
 
-Correr la aplicación desde Docker Desktop
+- también tenemos que tener el file: .dockerignore --> que va a contener:
+```
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+README.md
+notas.md
+.next
+.git
+```
+- una vez que tengo la Docker Desktop iniciado, corro los siguientes comandos en consola para crear la imagen y después levantarla
+
+--> crear `docker build -t nextjs-first-steps .`
+--> levantar `docker container run -p 3000:3000 nextjs-first-steps`
+
+_________________________________________________________________________________________________
+
 
 
 
